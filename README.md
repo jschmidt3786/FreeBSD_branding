@@ -2,7 +2,7 @@
 
 ### Assumptions ###
 
- - source code has been pulled down via git (```git clone --origin freebsd https://git.freebsd.org/src.git --branch main --depth 1 /usr/src```) # or releng/13, stable/13, etc.
+ - source code has been pulled down via git (```gitup release```)
  - custom kernel config already added
 
 ```
@@ -48,7 +48,7 @@ for e in \
    scripts/wlanconfig \
    scripts/hardening \
    scripts/rootpass ; do
-    sed -i '' 's/FreeBSD Installer/Pro:Centric Installer/' "$e"
+    sed -i '' 's/FreeBSD Installer/Custom Installer/' "$e"
 done
 
 # then source files
@@ -56,11 +56,11 @@ for e in \
   distextract/distextract.c \
   distfetch/distfetch.c \
   partedit/partedit.c ; do
-    sed -i '' 's/FreeBSD Installer/Pro:Centric Installer/' "$e"
+    sed -i '' 's/FreeBSD Installer/Custom Installer/' "$e"
 done
 
 # a rare error message we want branded
-sed -i '' 's/version of FreeBSD/version of Pro:Centric/' scripts/checksum
+sed -i '' 's/version of FreeBSD/version of Custom/' scripts/checksum
 
 # bootlabel, just in case (only for UFS?)
 sed -i '' 's/bootlabel="FreeBSD"/bootlabel="procentric"/' scripts/bootconfig
